@@ -280,7 +280,7 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 - ✅ 同步x86版所有功能
 
 <details>
-<summary>📜 2025年历史更新日志（点击展开）</summary>
+<summary>📜 更早的历史更新日志（点击展开）</summary>
 
 #### 2026.05.19~
 - **X86 v1.2.0003**
