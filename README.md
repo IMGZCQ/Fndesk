@@ -281,6 +281,7 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 
 <details>
 <summary>📜 2025年历史更新日志（点击展开）</summary>
+
 #### 2026.05.19~
 - **X86 v1.2.0003**
 - ☑️ 适配飞牛1.2.0003
