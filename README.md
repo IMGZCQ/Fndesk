@@ -278,6 +278,9 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 - ☑️ 后台一键还原增加概况预览
 - **ARM v1.1.3105**
 - ✅ 同步x86版所有功能
+
+<details>
+<summary>📜 2025年历史更新日志（点击展开）</summary>
 #### 2026.05.19~
 - **X86 v1.2.0003**
 - ☑️ 适配飞牛1.2.0003
@@ -465,9 +468,6 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 #### 2026.01.03 v0.97.x  
 - ☑️ 蓝色按钮回归,创建原生APP更便捷
 - ☑️ 缝缝补补
-<details>
-<summary>📜 2025年历史更新日志（点击展开）</summary>
-
 #### 2025.12.30 v0.96.x  
 - ☑️ 船新一目了然版
 - ☑️ 优化窗口层级关系
