@@ -1,7 +1,7 @@
 # <span style="color:#ff6b6b">Fndesk</span> 飞牛桌面管理工具
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 20px 0;">
-  <img width="1170" height="1280" alt="ChatGPT Image 2026年4月26日 09_13_57_1" src="https://github.com/user-attachments/assets/b248b5a7-ca13-4402-b959-4b8c90adddd9" />
+<img width="1774" height="887" alt="fndesk_poster21" src="https://github.com/user-attachments/assets/148be2d6-b6f3-49c6-93aa-5d8332d4c2ad" />
 
   <h2 style="margin-top: 0;">我的飞牛我做主,多处自定样式主题美化,桌面图标任君摆布,让飞牛成为你的导航页，收藏夹,Docker应用入口</h2>
 </div>  
@@ -632,6 +632,7 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 <img width="1051" height="1246" alt="image" src="https://github.com/user-attachments/assets/7ccde508-6035-44a7-8d10-fed973b8ad22" />
 <img width="1037" height="1044" alt="1111" src="https://github.com/user-attachments/assets/5cd746cd-345f-4e56-9975-e4b30ea427ed" />
 
+<img width="1199" height="1312" alt="fndesk_poster11" src="https://github.com/user-attachments/assets/bab087e3-74b4-4dda-b483-8cd73ddbdba3" />
 
 
 
