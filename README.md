@@ -214,6 +214,7 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 
 #### 2026.07.12~
 - **X86 v1.2.0203**
+- ⭕ 修复默认登录LOGO导致系统异常的BUG
 - ☑️ 更新一下应用/项目文档文案图片LOGO
 - ☑️ 适配飞牛文件收集自定义LOGO、二维码图标
 - ☑️ 修复生成原生图片数据取值问题
