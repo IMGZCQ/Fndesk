@@ -1,4 +1,4 @@
-# <span style="color:#ff6b6b">Fndesk</span> 飞牛桌面管理工具1
+# <span style="color:#ff6b6b">Fndesk</span> 飞牛桌面管理工具
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 20px 0;">
 <img width="1774" height="887" alt="fndesk_poster21" src="https://github.com/user-attachments/assets/148be2d6-b6f3-49c6-93aa-5d8332d4c2ad" />
