@@ -1,0 +1,101 @@
+[
+    {
+        "stepTitle": "即将享受独一无二的飞牛",
+        "items": [
+{
+    "type": "tips",
+    "helpText": "使用本应用将通过修改系统文件以达到你想修改系统的目的！"
+},
+{
+    "type": "radio",
+    "field": "wizard_fndesk_index",
+    "label": "登录后的默认页面",
+    "initValue": "index.html",
+    "options": [
+        {
+            "label": "功能导航页",
+            "value": "index.html"
+        },
+        {
+            "label": "图标&文件夹",
+            "value": "fndesk.html"
+        },
+        {
+            "label": "个性主题",
+            "value": "fnstyle.html"
+        },
+        {
+            "label": "音乐&其他",
+            "value": "sysico.html"
+        }
+    ],
+    "rules": [
+        {
+            "required": true,
+            "message": "选一个呗"
+        }
+    ]
+},
+            {
+    "type": "radio",
+    "field": "wizard_app_music",
+    "label": "音乐文件默认打开方式",
+    "initValue": "/cgi/ThirdParty/fndesk/index.cgi/MP3go/player.html",
+    "options": [
+        {
+            "label": "Fndesk Music界面",
+            "value": "/cgi/ThirdParty/fndesk/index.cgi/MP3go/player.html"
+        },
+        {
+            "label": "音乐速听界面",
+            "value": "/cgi/ThirdParty/fndesk/index.cgi"
+        }
+    ],
+    "rules": [
+        {
+            "required": false,
+            "message": "选一个呗"
+        }
+    ]
+},
+{
+    "type": "text",
+    "field": "wizard_wan_url",
+    "label": "（可选）新建图标时默认填入的公网地址：",
+    "initValue": "",
+    "rules": [
+        {
+            "required": false,
+            "message": "请输入默认公网URL"
+        },
+        {
+            "min": 0,
+            "max": 256,
+            "message": "默认内网URL长度应在0-256个字符之间"
+        }
+    ]
+},
+{
+    "type": "text",
+    "field": "wizard_lan_url",
+    "label": "（可选）新建图标时默认填入的内网地址：",
+    "initValue": "/MP3go/player.html",
+    "rules": [
+        {
+            "required": false,
+            "message": "请输入默认内网URL"
+        },
+        {
+            "min": 0,
+            "max": 256,
+            "message": "默认内网URL长度应在0-256个字符之间"
+        }
+    ]
+},
+{
+    "type": "tips",
+    "helpText": "后续更改可到飞牛的:应用中心 > 选择Fndesk > 应用设置!"
+}
+        ]
+    }
+]

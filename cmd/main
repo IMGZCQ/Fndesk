@@ -1,0 +1,204 @@
+#!/bin/bash
+
+# ========== 基础配置（全局保留） ==========
+LOG_FILE="${TRIM_APPDEST_VOL}/@appshare/${TRIM_APPNAME}/fndesk日志.log"
+PID_FILE="${TRIM_PKGVAR}/app.pid"
+DATA_DIR="${TRIM_DATA_SHARE_PATHS%%:*}"
+
+# Node版本路径 + 下载配置（全局定义，方便start里调用）
+NODE24="/var/apps/nodejs_v24/target/bin"
+NODE22="/var/apps/nodejs_v22/target/bin"
+DOWN_DIR="/var/apps/nodejs_fndesk"
+
+# ========== 初始化日志（全局保留，确保日志文件存在） ==========
+mkdir -p "$(dirname "${LOG_FILE}")" || exit 1
+touch "${LOG_FILE}" || exit 1
+
+# ========== 脚本自身输出重定向（全局保留） ==========
+exec >> "${LOG_FILE}" 2>&1
+
+# ========== 日志裁剪函数（全局保留） ==========
+trim_log() {
+    if [ -f "${LOG_FILE}" ]; then
+        local line_count=$(wc -l < "${LOG_FILE}")
+        if [ "${line_count}" -gt 100 ]; then
+            sed -i -e :a -e '$q;N;51,$D;ba' "${LOG_FILE}"
+            echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ 日志已裁剪，保留最后100行"
+        fi
+    fi
+}
+
+# ========== 进程检查函数（全局保留） ==========
+check_process() {
+    local pid=$1
+    kill -0 "${pid}" 2>/dev/null && return 0 || return 1
+}
+
+# ========== status函数（仅检查进程，无检测/下载） ==========
+status() {
+    # echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ 执行status指令，检查进程状态..."
+    if [ -f "${PID_FILE}" ]; then
+        pid=$(head -n 1 "${PID_FILE}" | tr -d '[:space:]')
+        if check_process "${pid}"; then
+           # echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ ${TRIM_APPNAME} 进程运行中，PID：${pid}"
+            return 0
+        else
+            rm -f "${PID_FILE}"
+           # echo "$(date '+%Y-%m-%d %H:%M:%S') - ⚠️ ${TRIM_APPNAME} 进程已退出，清理PID文件"
+        fi    
+    fi
+    # echo "$(date '+%Y-%m-%d %H:%M:%S') - ❌ ${TRIM_APPNAME} 进程未运行"
+    return 1
+}
+
+# ========== stop函数（仅停止进程，无检测/下载） ==========
+stop_process() {
+    # echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ 执行stop指令，停止进程..."
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - 🛑 飞牛系统停止了 ${TRIM_APPNAME} 应用..."
+
+    # ========== 原有逻辑：杀PID文件里的进程 ==========
+    if [ -r "${PID_FILE}" ]; then
+        pid=$(head -n 1 "${PID_FILE}" | tr -d '[:space:]')
+        
+        if check_process "${pid}"; then  # 只在进程存在时才杀（修复原有逻辑的小瑕疵）
+            # 优雅停止
+            kill -TERM ${pid}
+            # 等待10秒
+            local count=0
+            while check_process "${pid}" && [ $count -lt 10 ]; do
+                sleep 1
+                count=$((count + 1))
+            done
+            # 强制杀死
+            if check_process "${pid}"; then
+                kill -KILL "${pid}"
+                # echo "$(date '+%Y-%m-%d %H:%M:%S') - ⚠️ 进程 ${pid} 未正常退出，强制杀死"
+                sleep 1
+            fi
+        fi
+        # 不管进程是否存在，都删除PID文件（避免残留）
+        rm -f "${PID_FILE}"
+    fi
+
+    # ========== 新增核心逻辑：杀死所有匹配的node进程（彻底清残留） ==========
+    # 1. 先用pkill -f匹配"node ${TRIM_APPDEST}/server/server.js"的进程，优雅停止
+    # echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ 清理所有残留的 ${TRIM_APPNAME} node进程..."
+    pkill -f "node ${TRIM_APPDEST}/server/server.js" || true  # || true避免没进程时报错
+    sleep 2  # 等2秒让进程退出
+    # 2. 二次强制清理（确保杀干净）
+    pkill -9 -f "node ${TRIM_APPDEST}/server/server.js" || true
+    return 0
+}
+
+# ========== start函数（仅这里包含检测/下载/启动全流程） ==========
+start_process() {
+    echo ""
+    echo "-------------- -【$(date '+%Y-%m-%d %H:%M:%S')】- --------------"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ 飞牛系统启动了 ${TRIM_APPNAME} 应用..."
+    # 第一步：先检查进程是否已运行，避免重复启动
+    if status; then
+        # echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ ${TRIM_APPNAME} 进程已在运行，无需重复启动"
+        return 0
+    fi
+
+    # ========== 第二步：架构检测（仅在start执行） ==========
+    ARCH=$(uname -m)
+    case $ARCH in
+        x86_64|amd64)
+            nodejs_URL="https://fndesk.imcq.top/?url=node_x86"
+             # echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ 检测到架构：x86_64/amd64，使用下载地址：${nodejs_URL}"
+            ;;
+        arm64|aarch64)
+            nodejs_URL="https://fndesk.imcq.top/?url=node_arm"
+             # echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ 检测到架构：arm64/aarch64，使用下载地址：${nodejs_URL}"
+            ;;
+        *)
+            ERROR_MSG="$(date '+%Y-%m-%d %H:%M:%S') - ❌ 貌似缺失环境，请先在应用中心安装node.js_v24"
+            echo "${ERROR_MSG}"
+            exit 1
+            ;;
+    esac
+
+# ========== 第三步：Node优先级判断+下载（仅在start执行） ==========
+if [ -x "$NODE24/node" ]; then
+    export PATH="$NODE24:$PATH"
+    # echo "优先用v24"
+elif [ -x "$NODE22/node" ]; then
+    export PATH="$NODE22:$PATH"
+    # echo "优先用v22"
+elif [ -x "$DOWN_DIR/node" ]; then
+    export PATH="$DOWN_DIR:$PATH"
+    # echo "用已下载的Node"
+# 新增：检查系统全局Node（核心优化）
+elif command -v node >/dev/null 2>&1; then
+    # 系统有Node，直接用全局的，无需下载
+    # echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ 检测到系统已安装Node.js，直接使用全局版本：$(node -v)"
+    :  # 空命令，仅占位，无任何实际操作
+else
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - ℹ️ 系统没有Node.js，开始下载...请稍后...（或者先在应用中心安装node.js_v24）"
+        # 创建下载目录
+        if ! mkdir -p $DOWN_DIR; then
+            ERROR_MSG="$(date '+%Y-%m-%d %H:%M:%S') - ❌ 创建node下载目录失败，node下载失败，请先在应用中心安装node.js_v24"
+            echo "${ERROR_MSG}"
+            exit 1
+        fi
+
+        # curl下载（失败写日志）
+        if ! curl -fsSL $nodejs_URL -o $DOWN_DIR/node; then
+            ERROR_MSG="$(date '+%Y-%m-%d %H:%M:%S') - ❌ node下载失败，请先在应用中心安装node.js_v24"
+            echo "${ERROR_MSG}"
+            exit 1
+        fi
+
+        # 加执行权限
+        if ! chmod +x $DOWN_DIR/node; then
+            ERROR_MSG="$(date '+%Y-%m-%d %H:%M:%S') - ❌ 给下载的node加执行权限失败，node下载失败，请先在应用中心安装node.js_v24"
+            echo "${ERROR_MSG}"
+            exit 1
+        fi
+
+        # 验证下载的node
+        if ! [ -x "$DOWN_DIR/node" ]; then
+            ERROR_MSG="$(date '+%Y-%m-%d %H:%M:%S') - ❌ 下载的node文件不可执行，node下载失败，请先在应用中心安装node.js_v24"
+            echo "${ERROR_MSG}"
+            exit 1
+        fi
+
+        export PATH="$DOWN_DIR:$PATH"
+    fi
+
+    # ========== 第四步：验证Node并启动程序 ==========
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - ✅ 机器架构：${ARCH}  ✅ 使用node版本：$(node -v)"
+
+    # 启动命令
+    CMD="node ${TRIM_APPDEST}/server/server.js"
+    bash -c "${CMD} >> ${LOG_FILE} 2>&1" &
+    local app_pid=$!
+    printf "%s" "${app_pid}" > ${PID_FILE}
+    return 0
+}
+
+# ========== 脚本入口（分发指令） ==========
+case $1 in
+start)
+    start_process
+    ;;
+stop)
+    stop_process
+    trim_log
+    ;;
+status)
+    status
+    ret=$?
+    if [ $ret -eq 0 ]; then
+        exit 0
+    else
+        # Fndesk 99方案）
+        start_process
+        exit $?
+    fi
+    ;;
+*)
+    exit 1
+    ;;
+esac

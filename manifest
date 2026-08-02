@@ -1,0 +1,13 @@
+appname          = fndesk
+display_name     = `飞牛桌面管理工具 Fndesk`
+desc             = `飞牛桌面补全计划，自定义个性桌面主题、右键菜单、桌面图标、Docker图标一键创建，桌面小组件、音乐播放器~<br>• 🎵 Fndesk Music 飞牛桌面音乐播放器正式上线！从此桌面不再沉默，支持无损音频、快捷键、歌词与多套 UI 皮肤<br>• ✨ 图标 / 多层文件夹自由创建、批量管理、多设备同步，海量离线图标库，Docker 容器入口，彻底替代浏览器收藏夹<br>• 🌈 动态视频 / 图片壁纸、Win/Mac 复刻主题、全局毛玻璃；LOGO、登录页、ICP 公安备案全自定义，内置在线主题库一键套用<br>• 🌐 智能区分内外网自动切换链接、及自定义备用链接，PC / 移动端外链分享页独立美化配置<br>• 👑 全场景自定义右键菜单，便签 / 天气 / 日历等可缩放桌面小组件，任务栏沉底横置、一键隐藏图标、自动避让等实用功能<br>• 🔒 配置统一存储，支持 HTTPS 部署、密码重置、备份一键还原，飞牛安全入口加固<br>• ⚙️ 更多自定义：定时开关，机外链分享页，登录页备案信息，飞牛影视界面自定义<br>• ⬇️ <a target='_blank' href='https://fndesk.imcq.top/?url=dl&at=Fnos' style='color: #60a5fa;font-size:16px; font-weight: bold; text-decoration: none;'>下载FPK安装包</a> • 更多信息：Q群 1039270739 或 GitHub：IMGZCQ/fndesk<br><img height=420px width=auto src="https://club.fnnas.com/data/attachment/forum/202607/13/161756ife7gxqjmrqj11mz.jpg" />`
+source           = thirdparty
+maintainer       = 米恋泥
+maintainer_url   = https://github.com/IMGZCQ/fndesk
+distributor      = 米恋泥
+distributor_url  = https://club.fnnas.com/forum.php?mod=viewthread&tid=41336
+desktop_uidir    = ui
+desktop_applaunchname  = fndesk.Application
+platform=all
+version       =1.2.0302.10
+changelog =`• 新增访问码模板共5套（数据中心、元气小可爱、矩阵深渊、云阙启扉、虚空星穹）<br>• 适配飞牛内测1.2.0401；优化微调音乐页设置<br>• 修复计数器开关；天气小组件追增天气数据API<br>• 适配飞牛音乐（新增访问计数器;透明度;自定义标题、LOGO、背景等）<br>• 大量局部重构、性能优化、合拼去重、蒸发屎山。功能太多若有失效及时反馈<br>• 逆天完全自定义访问码页；内置多款样式；新增网站访问量显示<br>• 支持在线编辑图标（在图标管理页点击图标图片进行编辑）`

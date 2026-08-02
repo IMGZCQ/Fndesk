@@ -1,0 +1,19 @@
+#!/bin/bash
+
+### This script is called before the user installs the application.
+
+SRC_FILE="/var/apps/fndesk/target/server/static/icon.png"
+
+if [ -f "$SRC_FILE" ]; then
+    cp -f "$SRC_FILE" "/var/apps/fndesk/ICON.PNG"
+    cp -f "$SRC_FILE" "/var/apps/fndesk/ICON_256.PNG"
+    cp -f "$SRC_FILE" "/var/apps/fndesk/target/ui/images/icon_64.png"
+    cp -f "$SRC_FILE" "/var/apps/fndesk/target/ui/images/icon_256.png"
+    
+    chmod 644 "/var/apps/fndesk/ICON.PNG"
+    chmod 644 "/var/apps/fndesk/ICON_256.PNG"
+    chmod 644 "/var/apps/fndesk/target/ui/images/icon_64.png"
+    chmod 644 "/var/apps/fndesk/target/ui/images/icon_256.png"
+fi
+
+exit 0

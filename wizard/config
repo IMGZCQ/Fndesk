@@ -1,0 +1,109 @@
+[
+    {
+        "stepTitle": "飞牛桌面管理工具 预设定",
+        "items": [
+            {
+                "type": "text",
+                "field": "wizard_app_port",
+                "label": "端口",
+                "initValue": "9990",
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请输入端口号"
+                    },
+                    {
+                        "pattern": "^([1-9]\\d{3}|[1-5]\\d{4}|6[0-4]\\d{3}|65000)$",
+                        "message": "请选择1000-65000之间的数字"
+                    }
+                ]
+            },
+            {
+    "type": "radio",
+    "field": "wizard_fndesk_index",
+    "label": "默认首页",
+    "initValue": "",
+    "options": [
+        {
+            "label": "导航首页",
+            "value": "index.html"
+        },
+        {
+            "label": "图标&文件夹",
+            "value": "fndesk.html"
+        },
+        {
+            "label": "个性主题",
+            "value": "fnstyle.html"
+        },
+        {
+            "label": "音乐&其他",
+            "value": "sysico.html"
+        }
+    ],
+    "rules": [
+        {
+            "required": true,
+            "message": "选一个呗"
+        }
+    ]
+},
+            {
+    "type": "radio",
+    "field": "wizard_app_music",
+    "label": "音乐文件默认打开方式",
+    "initValue": "/cgi/ThirdParty/fndesk/index.cgi/MP3go/player.html",
+    "options": [
+        {
+            "label": "Fndesk Music界面",
+            "value": "/cgi/ThirdParty/fndesk/index.cgi/MP3go/player.html"
+        },
+        {
+            "label": "音乐速听界面",
+            "value": "/cgi/ThirdParty/fndesk/index.cgi"
+        }
+    ],
+    "rules": [
+        {
+            "required": false,
+            "message": "选一个呗"
+        }
+    ]
+},
+{
+    "type": "text",
+    "field": "wizard_wan_url",
+    "label": "默认填写的公网url",
+    "initValue": "",
+    "rules": [
+        {
+            "required": false,
+            "message": "新建图标时默认填入的公网地址"
+        },
+        {
+            "min": 0,
+            "max": 256,
+            "message": "默认内网URL长度应在0-256个字符之间"
+        }
+    ]
+},
+{
+    "type": "text",
+    "field": "wizard_lan_url",
+    "label": "默认填写的内网url",
+    "initValue": "",
+    "rules": [
+        {
+            "required": false,
+            "message": "新建图标时默认填入的内网地址"
+        },
+        {
+            "min": 0,
+            "max": 256,
+            "message": "默认内网URL长度应在0-256个字符之间"
+        }
+    ]
+}
+        ]
+    }
+]

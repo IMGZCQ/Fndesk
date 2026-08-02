@@ -1,4 +1,4 @@
-# <span style="color:#ff6b6b">Fndesk</span> 飞牛桌面管理工具
+# <span style="color:#ff6b6b">Fndesk</span> 飞牛桌面管理工具1
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 20px 0;">
 <img width="1774" height="887" alt="fndesk_poster21" src="https://github.com/user-attachments/assets/148be2d6-b6f3-49c6-93aa-5d8332d4c2ad" />
@@ -214,6 +214,7 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 
 #### 2026.07.26 ~ today
 - **X86 v1.2.0302**
+- ☑️ 新增访问码模板共5套（数据中心、元气小可爱、矩阵深渊、云阙启扉、虚空星穹）
 - ☑️ 优化微调音乐页设置
 - ☑️ 适配飞牛内测1.2.0401；
 - ⭕ 修复访问计数器开关失效问题

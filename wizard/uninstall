@@ -1,0 +1,51 @@
+[
+    {
+        "stepTitle": "确认卸载",
+        "items": [
+            {
+                "type": "radio",
+                "field": "wizard_data_action",
+                "label": "是否保留fndesk配置数据(包括自建图标,主题,背景,LOGO等所有自定义配置)",
+                "initValue": "keep",
+                "options": [
+                    {
+                        "label": "保留数据（推荐）",
+                        "value": "keep"
+                    },
+                    {
+                        "label": "删除所有数据 - 此操作不可恢复！",
+                        "value": "delete"
+                    }
+                ],
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请选择数据保留选项"
+                    }
+                ]
+            },
+            {
+                "type": "radio",
+                "field": "wizard_modules_1111",
+                "label": "卸载后不会改变已经修改的内容,如需还原修改,请先到fndesk首页>更多>还原 后再卸载",
+                "initValue": "",
+                "options": [
+                    {
+                        "label": "我明白了",
+                        "value": "4"
+                    }
+                ],
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "你明白了吗?"
+                    }
+                ]
+            },
+            {
+                "type": "tips",
+                "helpText": "<strong>fndesk的配置文件在[文件管理]>[应用文件]>[fndesk]里面,可自行备份/恢复</strong> "
+            }
+        ]
+    }
+]

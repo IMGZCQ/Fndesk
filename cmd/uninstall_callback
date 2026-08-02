@@ -1,0 +1,24 @@
+#!/bin/bash
+
+### This script is called after the user uninstalls the application.
+
+# 获取用户在向导中的选择
+WIZARD_DATA_ACTION="$wizard_data_action"
+
+echo "卸载时，用户选择数据保留选项: $WIZARD_DATA_ACTION"
+
+# 是否保留用户数据
+if [ "$WIZARD_DATA_ACTION" = "delete" ]; then
+    echo "开始删除数据目录：${TRIM_APPDEST_VOL}/@appshare/${TRIM_APPNAME}"
+    rm -rf "${TRIM_APPDEST_VOL}/@appshare/${TRIM_APPNAME}"
+else
+    echo "保留用户数据"
+fi
+
+# 我受够了我要清理飞牛垃圾残留
+rm -rf "${TRIM_APPDEST_VOL}/@appmeta/${TRIM_APPNAME}"
+rm -rf "${TRIM_APPDEST_VOL}/@appconf/${TRIM_APPNAME}"
+rm -rf "${TRIM_APPDEST_VOL}/@appdata/${TRIM_APPNAME}"
+rm -rf "${TRIM_APPDEST_VOL}/@apphome/${TRIM_APPNAME}"
+
+exit 0

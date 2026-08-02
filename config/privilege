@@ -1,0 +1,8 @@
+{
+    "defaults":
+    {
+        "run-as": "root"
+    },
+    "username": "fndesk",
+    "groupname": "fndesk"
+}

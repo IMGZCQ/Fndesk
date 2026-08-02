@@ -1,0 +1,18 @@
+{
+    "data-share":
+    {
+        "shares":
+        [
+            {
+                "name": "fndesk",
+                "permission":
+                {
+                    "rw":
+                    [
+                        "fndesk"
+                    ]
+                }
+            }
+        ]
+    }
+}
