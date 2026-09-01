@@ -205,10 +205,12 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
    <h4 style="margin-top: 0;">1.下载飞牛应用安装包,到应用中心左下角手动安装：</h4>
   
   [fpk下载链接](https://fndesk.imcq.top/?url=dl&at=GitHUb "点击我没错了")  
-     <h4 style="margin-top: 0;">~~2.Docker部署：~~</h4>
-  (*Docker版已停)  
-  
-  <img width="575" height="246" alt="62775580646825611f76c672e11c91f6" src="https://github.com/user-attachments/assets/7c58ea66-ca1a-4d65-8b26-cce89bde813c" />  
+
+----
+###   如果您觉得这个工具对您有帮助，欢迎通过以下方式赞赏支持开发者
+您的支持是我持续开发和维护这个项目的动力！感谢每一位用户的认可与鼓励。
+
+<img width="446" height="267" alt="pay" src="https://github.com/user-attachments/assets/7ac4324a-3b36-4394-9982-10f199a993b8" />
   
 ## <span style="color:#06d6a0">更新日志</span>
 
