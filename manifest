@@ -7,7 +7,7 @@ maintainer_url   = https://github.com/IMGZCQ/fndesk
 distributor      = 米恋泥
 distributor_url  = https://club.fnnas.com/forum.php?mod=viewthread&tid=41336
 desktop_uidir    = ui
+platform=x86
 desktop_applaunchname  = fndesk.Application
-platform=all
-version       =1.2.0302.10
-changelog =`• 新增访问码模板共5套（数据中心、元气小可爱、矩阵深渊、云阙启扉、虚空星穹）<br>• 适配飞牛内测1.2.0401；优化微调音乐页设置<br>• 修复计数器开关；天气小组件追增天气数据API<br>• 适配飞牛音乐（新增访问计数器;透明度;自定义标题、LOGO、背景等）<br>• 大量局部重构、性能优化、合拼去重、蒸发屎山。功能太多若有失效及时反馈<br>• 逆天完全自定义访问码页；内置多款样式；新增网站访问量显示<br>• 支持在线编辑图标（在图标管理页点击图标图片进行编辑）`
+version       =1.2.0604
+changelog =`• 极致的升级体验；右键菜单增加飞牛系统应用；完善Fndesk图标和桌面的右键菜单<br>• 设备信息界面硬件信息修改；伪装飞牛硬件；隐藏系统设置的设备ID显示<br>• 有更新时，支持在桌面Fndesk图标右键菜单直接更新操作<br>• 自动开关机功能选项增加开启网卡WOL开关<br>• 又快了（缩小静态文件暴露范围）；支持修改回收站图标；修复库源管理滚动问题<br>• 飞牛所有应用图标自由修改<br>• VIP：新增自定义飞牛窗口缩放判定区域<br>• 支持隐藏飞牛桌面系统组件（右键菜单入口）<br>• 重做鉴权，安全系数史诗级提升（感谢 TG_子君 做安全测试）<br>• 用go重构后的版本，性能大幅提升占用只有十几MB`
