@@ -1,1 +1,0 @@
-{"name":"米恋泥飞牛桌面管理","version":"1.0.0","main":"server.js","bin":"server.js","scripts":{"start":"node server.js","build":"pkg . --targets node18-linux-x64 --output fndesk"},"pkg":{"assets":["api/**/*","MP3go/**/*","fonts/**/*","HDicon/**/*","*.html","*.json","*.mp3"]},"dependencies":{"adm-zip":"^0.5.16","formidable":"^3.5.4","httpolyglot":"^0.1.2"}}
