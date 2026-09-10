@@ -10,6 +10,14 @@
             "allUsers": false,
             "control": {"accessPerm": "editable"}
         },
+        "fndesk.fndesk": {
+            "title": "Fndesk 音乐速听",
+            "icon": "images/icon_{0}.png",
+            "type": "iframe",
+            "url": "/app/fndesk/fndesk.html",
+            "allUsers": true,
+            "noDisplay": true
+        },
         "fndesk.player": {
             "title": "Fndesk 音乐速听",
             "icon": "images/icon_{0}.png",
