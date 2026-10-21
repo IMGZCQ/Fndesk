@@ -218,6 +218,8 @@ bash <(curl -fSL# https://fndesk.imcq.top/?url=fn_detect)
 
 #### 2026.10.14 ~ today
 - **X86 v1.2.0800**
+- ☑️ 增加VIP授权激活码领取渠道源
+- ☑️ 调整搜索小组件样式
 - ☑️ 折腾迁移服务器完毕
 - ☑️ 修复Live2D壁纸各种障碍
 - **ARM v1.2.0800**
